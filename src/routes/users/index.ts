@@ -31,12 +31,12 @@ export async function UsersRoutes(app: FastifyInstance) {
             })
         }
 
-        const token_uuid = (await knex('user_tokens')
+        const [token_uuid] = await knex('user_tokens')
             .insert({
                 token_uuid: randomUUID(),
                 user_id: user.id,
             })
-            .returning('token_uuid'))[0]
+            .returning('token_uuid')
 
         res.status(200).send({
             data: {

@@ -5,3 +5,7 @@ export interface UserInterface {
     created_at?: string
     updated_at?: string
 }
+
+export interface UserSessionInterface extends Omit<UserInterface, 'password'> {
+    password?: string
+}

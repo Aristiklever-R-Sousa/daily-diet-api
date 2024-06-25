@@ -3,7 +3,7 @@ import { FastifyRequestWithUser } from "../@types/fastifyRequest";
 import { knex } from "../configs/database";
 
 export async function authenticateUser(request: FastifyRequestWithUser, response: FastifyReply) {
-    const token_uuid = request.headers['authorization']
+    const token_uuid = request.headers['authorization'] ?? ''
 
     const user = await knex('user_tokens as ut')
         .join('users as u', 'u.id', '=', 'ut.user_id')
@@ -19,6 +19,5 @@ export async function authenticateUser(request: FastifyRequestWithUser, response
     request.user = {
         id: user.id,
         user_name: user.user_name,
-        password: ''
     }
 }
