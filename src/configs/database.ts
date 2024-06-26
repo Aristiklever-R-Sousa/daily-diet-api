@@ -21,7 +21,8 @@ export const dbConfig: Knex.Config = {
     migrations: {
         extension: 'ts',
         directory: './src/database/migrations'
-    }
+    },
+    useNullAsDefault: DATABASE_CONNECTION == 'sqlite3'
 }
 
 export const knex = setupKnex(dbConfig)
