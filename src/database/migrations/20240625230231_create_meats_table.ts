@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
         table.foreign('user_id').references('id').inTable('users')
 
         table.string('name')
-        table.string('description')
+        table.text('description')
         table.dateTime('dt_snack')
         table.boolean('is_part_of_diet').notNullable().defaultTo(false)
 

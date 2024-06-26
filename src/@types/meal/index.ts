@@ -1,5 +1,6 @@
 export interface MeatInterface {
     id: number
+    user_id: number
     name: string
     description: string
     is_part_of_diet: boolean
